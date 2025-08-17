@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package user;
+option go_package = "github.com/sYASHKAs/project-protos/proto/user";
+
+import "google/protobuf/empty.proto";
+
+// Сущность пользователь
+message User {
+  string id    = 1;
+  string email = 2;
+}
+
+// Запрос на создание
+message CreateUserRequest {
+  string email = 1;
+}
+message CreateUserResponse {
+  User user = 1;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message ListUsersRequest {}
+message ListUsersResponse {
+  repeated User users = 1;
+}
+
+message UpdateUserRequest {
+  string id = 1;
+  string email = 2;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+// Сервис
+service UserService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser (GetUserRequest) returns (User);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+  rpc UpdateUser (UpdateUserRequest) returns (User);
+  rpc DeleteUser (DeleteUserRequest) returns (google.protobuf.Empty);
+}
