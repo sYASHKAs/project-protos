@@ -1,4 +1,4 @@
-PROTOS  := proto/*.proto
+PROTOS  := $(wildcard proto/*/*.proto)
 OUT_DIR := .
 
 generate:
@@ -9,4 +9,4 @@ generate:
 	       --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/task/*.proto
 
 clean:
-	find . -name "*.pb.go" -delete
+	del /S /Q *.pb.go
