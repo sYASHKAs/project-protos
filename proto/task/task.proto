@@ -51,7 +51,6 @@ message UpdateTaskResponse {
 
 message DeleteTaskRequest {
     string id = 1;
-    string user_id = 2;
 }
 
 service TaskService {
